@@ -100,14 +100,14 @@ git push -u origin main
 1. Разверните раздел **"Environment Variables"**
 2. Добавьте **первую переменную**:
    - Name: `TELEGRAM_BOT_TOKEN`
-   - Value: `8342620375:AAE3Mg5I--7qgxS9RoDgNlJWQ132bAc-G8A` (ваш токен)
+   - Value: `Ваш токен`
    - Environments: выберите все (Production, Preview, Development)
    
 3. Нажмите **"Add"**
 
 4. Добавьте **вторую переменную**:
    - Name: `TELEGRAM_CHAT_ID`
-   - Value: `166456217` (ваш ID)
+   - Value: `Ваш ID`
    - Environments: выберите все
    
 5. Нажмите **"Add"**

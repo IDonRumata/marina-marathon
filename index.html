@@ -704,13 +704,24 @@
                         <label for="telegram">Telegram username</label>
                         <input type="text" id="telegram" name="telegram" placeholder="@username">
                     </div>
-                    
+                    <!-- HONEYPOT ПОЛЕ - добавь ЗДЕСЬ -->
+                    <input 
+                        type="text" 
+                        name="website" 
+                        id="website" 
+                        style="display:none !important; position:absolute; left:-9999px;" 
+                        tabindex="-1" 
+                        autocomplete="off"
+                        aria-hidden="true"
+ >                     
+                    <!-- Кнопка -->
                     <button type="submit" class="submit-button" id="submit-btn">Зарегистрироваться за $5</button>
                     
                     <div class="success-message" id="success-message">
                         ✅ Спасибо за регистрацию! Проверьте ваш Telegram для дальнейших инструкций.
                     </div>
-                    
+                    <!-- Honeypot защита от ботов -->
+
                     <div class="error-message" id="error-message">
                         ❌ Произошла ошибка. Пожалуйста, попробуйте еще раз или свяжитесь с нами напрямую: <a href="https://www.instagram.com/marina_dementjeva/" style="color: white; text-decoration: underline;">@marina_dementjeva</a>
                     </div>
@@ -765,12 +776,13 @@
             surname: document.getElementById('surname').value,
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
-            telegram: document.getElementById('telegram').value
+            telegram: document.getElementById('telegram').value   
+            website: document.getElementById('website').value
         };
 
         try {
             // Отправляем данные на наш безопасный API endpoint
-            const response = await fetch('/api/submit-form', {
+            const response = await fetch('/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

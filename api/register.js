@@ -5,6 +5,18 @@
 // Токен хранится в переменных окружения и недоступен публично
 
 export default async function handler(req, res) {
+    // ========================================
+    // CORS заголовки для совместимости
+    // ========================================
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    // Обработка preflight запроса
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
     // Разрешаем только POST запросы
     if (req.method !== 'POST') {
         return res.status(405).json({ 
@@ -15,7 +27,18 @@ export default async function handler(req, res) {
 
     try {
         // Получаем данные из тела запроса
-        const { name, surname, email, phone, telegram } = req.body;
+        const { name, surname, email, phone, telegram, website } = req.body;
+
+        // ========================================
+        // Honeypot защита от ботов
+        // ========================================
+        if (website) {
+            console.log('🚫 Spam bot detected via honeypot');
+            return res.status(400).json({ 
+                success: false, 
+                error: 'Spam detected' 
+            });
+        }
 
         // Валидация обязательных полей
         if (!name || !surname || !email || !phone) {

@@ -59,7 +59,7 @@
 
 ```javascript
 // index.html - ТОКЕН В КОДЕ!
-const TOKEN = "8342620375:AAE3Mg5I--7qgxS9RoDgNlJWQ132bAc-G8A";
+const TOKEN = "Ваш Токен";
 // ☠️ Любой может открыть код страницы и украсть токен!
 ```
 
