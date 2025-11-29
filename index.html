@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финансовый Марафон с Мариной Дементьевой</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f1f5f9;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(-45deg, #6366f1, #8b5cf6, #ec4899, #f59e0b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-text {
+            color: white;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(120deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .price-old {
+            font-size: 1.5rem;
+            position: relative;
+            opacity: 0.7;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-old::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 2px;
+            background: white;
+            transform: translateY(-50%);
+        }
+
+        .price-new {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fbbf24;
+            display: block;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 0.8s ease 0.3s backwards;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: var(--dark);
+            padding: 1.25rem 3rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .about {
+            background: var(--light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-text ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-text ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .about-text ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .experience-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInRight 0.8s ease;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .program {
+            background: white;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+            border: 2px solid transparent;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+        }
+
+        .day-number {
+            display: inline-flex;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .program-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .program-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .program-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .program-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .testimonials {
+            background: var(--light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info .result {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .registration {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content,
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .program-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .success-message {
+            background: var(--success);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message {
+            background: #ef4444;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero gradient-bg">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Финансовый <span class="highlight">Марафон</span><br>с Мариной Дементьевой</h1>
+                <p>Измените свое финансовое будущее за 3 дня! Узнайте, как инвестировать безопасно и прибыльно в 2026 году.</p>
+                
+                <div class="price-tag">
+                    <span class="price-old">$95</span>
+                    <span class="price-new">$5</span>
+                </div>
+                
+                <a href="#registration" class="cta-button">Зарегистрироваться сейчас</a>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://raw.githubusercontent.com/IDonRumata/marina-marathon/main/photo_2024-11-08_16-01-36.jpg" alt="Марина Дементьева">
+            </div>
+        </div>
+    </section>
+
+    <section class="about scroll-reveal">
+        <div class="container">
+            <h2>Познакомьтесь с Мариной</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Эксперт с 20-летним опытом</h3>
+                    <p>Марина Дементьева начала инвестировать 20 лет назад и за это время освоила все основные инструменты финансового рынка:</p>
+                    <ul>
+                        <li>Арендная недвижимость</li>
+                        <li>Фондовый рынок</li>
+                        <li>Криптовалюта и майнинг Ethereum</li>
+                        <li>Банковские продукты</li>
+                        <li>Институциональные инвестиционные фонды</li>
+                        <li>Алгоритмический трейдинг</li>
+                    </ul>
+                    <div class="experience-badge">20 лет опыта инвестирования</div>
+                </div>
+                
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/ZfTbjHTYU2Q" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="program scroll-reveal">
+        <div class="container">
+            <h2>Программа марафона</h2>
+            <div class="program-grid">
+                <div class="program-card">
+                    <div class="day-number">1</div>
+                    <h3>День 1: Результаты и мотивация</h3>
+                    <ul>
+                        <li>Почему стоит участвовать в марафоне</li>
+                        <li>Реальные результаты участников</li>
+                        <li>Истории успеха и кейсы</li>
+                        <li>Ваш путь к финансовой свободе</li>
+                    </ul>
+                </div>
+                
+                <div class="program-card">
+                    <div class="day-number">2</div>
+                    <h3>День 2: Где найти деньги</h3>
+                    <ul>
+                        <li>Источники средств для инвестиций</li>
+                        <li>Оптимизация личного бюджета</li>
+                        <li>Пассивный доход: что это и как создать</li>
+                        <li>Практические упражнения</li>
+                    </ul>
+                </div>
+                
+                <div class="program-card">
+                    <div class="day-number">3</div>
+                    <h3>День 3: Инвестиции 2026</h3>
+                    <ul>
+                        <li>Лучшие варианты инвестирования в 2026</li>
+                        <li>Создание счетов на биржах и у брокеров</li>
+                        <li>Binex для Беларуси, Bybit для других стран</li>
+                        <li>Первые реальные инвестиции</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials scroll-reveal">
+        <div class="container">
+            <h2>Отзывы участников</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">А</div>
+                        <div class="testimonial-info">
+                            <h4>Анна П.</h4>
+                            <span class="result">+$12,000 за 6 месяцев</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"После марафона Марины я впервые поняла, как работают инвестиции. За полгода мой портфель вырос на 40%! Спасибо за понятные объяснения и практические советы."</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">Д</div>
+                        <div class="testimonial-info">
+                            <h4>Дмитрий К.</h4>
+                            <span class="result">Создал пассивный доход</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Марафон открыл мне глаза на возможности криптовалюты. Теперь у меня есть стабильный пассивный доход от стейкинга, помимо других источников дохода, которые мы создали с Мариной. Рекомендую всем, кто хочет разобраться в финансах!"</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">Е</div>
+                        <div class="testimonial-info">
+                            <h4>Олеся С.</h4>
+                            <span class="result">Финансовая независимость</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Я всегда боялась инвестировать, но Марина объяснила все так просто! Теперь я уверенно управляю своими финансами и планирую свое будущее. Я начала себя чувствоать независимо и свободно!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="registration" id="registration">
+        <div class="container">
+            <h2 style="color: white;">Зарегистрируйтесь на марафон</h2>
+            <div class="form-container">
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="name">Имя *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="surname">Фамилия *</label>
+                        <input type="text" id="surname" name="surname" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telegram">Telegram username</label>
+                        <input type="text" id="telegram" name="telegram" placeholder="@username">
+                    </div>
+                    
+                    <button type="submit" class="submit-button" id="submit-btn">Зарегистрироваться за $5</button>
+                    
+                    <div class="success-message" id="success-message">
+                        ✅ Спасибо за регистрацию! Проверьте ваш Telegram для дальнейших инструкций.
+                    </div>
+                    
+                    <div class="error-message" id="error-message">
+                        ❌ Произошла ошибка. Пожалуйста, попробуйте еще раз или свяжитесь с нами напрямую: <a href="https://www.instagram.com/marina_dementjeva/" style="color: white; text-decoration: underline;">@marina_dementjeva</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <h3 style="margin-bottom: 1rem;">Дисклеймер</h3>
+                <p>
+                    Данный марафон носит исключительно образовательный характер. Вся предоставленная информация не является финансовой рекомендацией или призывом к действию. 
+                    Инвестиции связаны с рисками, включая возможность полной потери вложенных средств. Решения об инвестировании принимаются участниками самостоятельно, 
+                    и вся ответственность за финансовые результаты лежит исключительно на участнике. Организатор марафона не несет ответственности за ваши инвестиционные решения и их последствия.
+                </p>
+                <p style="margin-top: 1rem;">© 2025 Марина Дементьева. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ==========================================================
+    // 🔒 БЕЗОПАСНАЯ ОТПРАВКА ФОРМЫ ЧЕРЕЗ API
+    // ==========================================================
+    // Токен теперь хранится на сервере в переменных окружения
+    // Никакой приватной информации в публичном коде!
+    
+    const BOT_USERNAME = "kronon_matafon_bot";
+    const CONTACT_LINK = "https://www.instagram.com/marina_dementjeva/";
+
+    document.getElementById('registration-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const form = this;
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('success-message');
+        const errorMsg = document.getElementById('error-message');
+
+        // Скрываем предыдущие сообщения
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "Отправка...";
+        submitBtn.disabled = true;
+
+        // Собираем данные формы
+        const formData = {
+            name: document.getElementById('name').value,
+            surname: document.getElementById('surname').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            telegram: document.getElementById('telegram').value
+        };
+
+        try {
+            // Отправляем данные на наш безопасный API endpoint
+            const response = await fetch('/api/submit-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                // Успешная отправка
+                successMsg.style.display = 'block';
+                form.reset();
+                
+                // Перенаправляем в Telegram бота
+                setTimeout(() => {
+                    window.location.href = `https://t.me/${BOT_USERNAME}`;
+                }, 1500);
+            } else {
+                // Ошибка от API
+                errorMsg.style.display = 'block';
+                console.error('API Error:', data.error);
+            }
+        } catch (error) {
+            // Ошибка сети или другая проблема
+            errorMsg.style.display = 'block';
+            console.error('Network Error:', error);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    });
+
+    // ==========================================================
+    // АНИМАЦИИ И СКРОЛЛ-ЭФФЕКТЫ
+    // ==========================================================
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach((el) => {
+        observer.observe(el);
+    });
+
+    // Плавная прокрутка к якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    </script>
+</body>
+</html>
