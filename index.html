@@ -11,6 +11,8 @@
     <meta property="og:url" content="https://fin-crash.vercel.app/">
     <link rel="shortcut icon" href="/ava2.ico" type="image/x-icon">
     <link rel="icon" href="/ava2.ico" type="image/x-icon">
+    <!-- reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdysxwsAAAAAFy8vpbFnd5_L6K8HhkI3MyWAH6B"></script>
     <style>
         * {
             margin: 0;
@@ -567,7 +569,7 @@
                     <span class="price-new">$5</span>
                 </div>
                 
-                <a href="#registration" class="cta-button">Пройти Краш-тест за $5</a>
+                <a href="#registration" class="cta-button">Сделай Финансовую перезагрузку</a>
             </div>
             
             <div class="hero-image">
@@ -609,7 +611,7 @@
                     <div class="day-number">1</div>
                     <h3>День 1: Результаты и мотивация</h3>
                     <ul>
-                        <li>Почему стоит пройти Краш-тест</li>
+                        <li>Почему стоит сделать Перезагрузку</li>
                         <li>Реальные результаты участников</li>
                         <li>Истории успеха и кейсы</li>
                         <li>Твой путь к финансовой свободе</li>
@@ -633,7 +635,7 @@
                     <ul>
                         <li>Лучшие варианты инвестирования в 2026</li>
                         <li>Создание счетов на биржах и у брокеров</li>
-                        <li>Binex для Беларуси, Bybit для других стран</li>
+                        <li>Откроем реальные легальные счета, чтобы вы уже могли при желании инвестировать</li>
                         <li>Первые реальные инвестиции</li>
                     </ul>
                 </div>
@@ -653,7 +655,7 @@
                             <span class="result">+$12,000 за 6 месяцев</span>
                         </div>
                     </div>
-                    <p class="testimonial-text">"После Краш-теста Марины я впервые поняла, как работают инвестиции. За полгода мой портфель вырос на 40%! Спасибо за понятные объяснения и практические советы."</p>
+                    <p class="testimonial-text">"После Финансовой перезагрузки Марины я впервые поняла, как работают инвестиции. За полгода мой портфель вырос на 40%! Спасибо за понятные объяснения и практические советы."</p>
                 </div>
                 
                 <div class="testimonial-card">
@@ -664,7 +666,7 @@
                             <span class="result">Создал пассивный доход</span>
                         </div>
                     </div>
-                    <p class="testimonial-text">"Краш-тест открыл мне глаза на возможности криптовалюты. Теперь у меня есть стабильный пассивный доход от стейкинга, помимо других источников дохода, которые мы создали с Мариной. Рекомендую всем, кто хочет разобраться в финансах!"</p>
+                    <p class="testimonial-text">"Финансовая перезагрузка открыл мне глаза на возможности криптовалюты. Теперь у меня есть стабильный пассивный доход от стейкинга, помимо других источников дохода, которые мы создали с Мариной. Рекомендую всем, кто хочет разобраться в финансах!"</p>
                 </div>
                 
                 <div class="testimonial-card">
@@ -683,7 +685,7 @@
 
     <section class="registration" id="registration">
         <div class="container">
-            <h2 style="color: white;">Пройди Краш-тест</h2>
+            <h2 style="color: white;">Сделай Финансовую перезагрузку</h2>
             <div class="form-container">
                 <form id="registration-form">
                     <div class="form-group">
@@ -706,11 +708,7 @@
                         <input type="tel" id="phone" name="phone" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="telegram">Telegram username</label>
-                        <input type="text" id="telegram" name="telegram" placeholder="@username">
-                    </div>
-                    <!-- HONEYPOT ПОЛЕ -->
+                    <!-- HONEYPOT ПОЛЕ (скрытое) -->
                     <input 
                         type="text" 
                         name="website" 
@@ -720,15 +718,15 @@
                         autocomplete="off"
                         aria-hidden="true"
                     >                     
-                    <!-- Кнопка -->
-                    <button type="submit" class="submit-button" id="submit-btn">Пройти Краш-тест за $5</button>
+                    
+                    <button type="submit" class="submit-button" id="submit-btn">Сделай Финансовую перезагрузку за $5</button>
                     
                     <div class="success-message" id="success-message">
                         ✅ Ты в игре! Переходи в Telegram для следующего шага.
                     </div>
 
                     <div class="error-message" id="error-message">
-                        ❌ Произошла ошибка. Пожалуйста, попробуй еще раз или свяжись с нами напрямую: <a href="https://www.instagram.com/marina_dementjeva/" style="color: white; text-decoration: underline;">@marina_dementjeva</a>
+                        ❌ Произошла ошибка. Попробуй ещё раз.
                     </div>
                 </form>
             </div>
@@ -740,9 +738,9 @@
             <div class="disclaimer">
                 <h3 style="margin-bottom: 1rem;">Дисклеймер</h3>
                 <p>
-                    Данный Краш-тест носит исключительно образовательный характер. Вся предоставленная информация не является финансовой рекомендацией или призывом к действию. 
+                    Данный материал носит исключительно образовательный характер. Вся предоставленная информация не является финансовой рекомендацией или призывом к действию. 
                     Инвестиции связаны с рисками, включая возможность полной потери вложенных средств. Решения об инвестировании принимаются участниками самостоятельно, 
-                    и вся ответственность за финансовые результаты лежит исключительно на участнике. Организатор Краш-теста не несет ответственности за твои инвестиционные решения и их последствия.
+                    и вся ответственность за финансовые результаты лежит исключительно на участнике. Организатор не несет ответственности за твои инвестиционные решения и их последствия.
                 </p>
                 <p style="margin-top: 1rem;">© 2025 Марина Дементьева. Все права защищены.</p>
             </div>
@@ -751,13 +749,10 @@
 
     <script>
     // ==========================================================
-    // 🔒 БЕЗОПАСНАЯ ОТПРАВКА ФОРМЫ ЧЕРЕЗ API
+    // 🔒 ФОРМА С DEEP LINK ДЛЯ TELEGRAM
     // ==========================================================
-    // Токен теперь хранится на сервере в переменных окружения
-    // Никакой приватной информации в публичном коде!
     
-    const BOT_USERNAME = "kronon_matafon_bot";
-    const CONTACT_LINK = "https://www.instagram.com/marina_dementjeva/";
+    const RECAPTCHA_SITE_KEY = "6LdysxwsAAAAAFy8vpbFnd5_L6K8HhkI3MyWAH6B";
 
     document.getElementById('registration-form').addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -767,54 +762,69 @@
         const successMsg = document.getElementById('success-message');
         const errorMsg = document.getElementById('error-message');
 
-        // Скрываем предыдущие сообщения
         successMsg.style.display = 'none';
         errorMsg.style.display = 'none';
 
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = "Отправка...";
+        submitBtn.textContent = "Проверка...";
         submitBtn.disabled = true;
 
-        // Собираем данные формы
-        const formData = {
-            name: document.getElementById('name').value,
-            surname: document.getElementById('surname').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            telegram: document.getElementById('telegram').value,   
-            website: document.getElementById('website').value
-        };
-
         try {
-            // Отправляем данные на наш безопасный API endpoint
+            // --- 1. reCAPTCHA (если доступна) ---
+            let recaptchaToken = null;
+            try {
+                if (typeof grecaptcha !== 'undefined') {
+                    recaptchaToken = await grecaptcha.execute(RECAPTCHA_SITE_KEY, {action: 'submit'});
+                }
+            } catch (e) {
+                console.warn('reCAPTCHA unavailable');
+            }
+
+            // --- 2. ДАННЫЕ ФОРМЫ ---
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                surname: document.getElementById('surname').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                website: document.getElementById('website').value,
+                recaptchaToken: recaptchaToken
+            };
+
+            // --- 3. ВАЛИДАЦИЯ ---
+            if (!formData.name || !formData.email || !formData.phone) {
+                throw new Error('Заполни все обязательные поля');
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                throw new Error('Введи корректный email');
+            }
+
+            submitBtn.textContent = "Отправка...";
+
+            // --- 4. ОТПРАВКА ---
             const response = await fetch('/api/register', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
 
             const data = await response.json();
 
             if (response.ok && data.success) {
-                // Успешная отправка
                 successMsg.style.display = 'block';
                 form.reset();
                 
-                // Перенаправляем в Telegram бота
+                // --- 5. РЕДИРЕКТ НА TELEGRAM С DEEP LINK ---
                 setTimeout(() => {
-                    window.location.href = `https://t.me/${BOT_USERNAME}`;
+                    window.location.href = data.redirectUrl;
                 }, 1500);
             } else {
-                // Ошибка от API
-                errorMsg.style.display = 'block';
-                console.error('API Error:', data.error);
+                throw new Error(data.error || 'Ошибка отправки');
             }
         } catch (error) {
-            // Ошибка сети или другая проблема
+            errorMsg.textContent = '❌ ' + error.message;
             errorMsg.style.display = 'block';
-            console.error('Network Error:', error);
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = originalText;
@@ -822,35 +832,24 @@
     });
 
     // ==========================================================
-    // АНИМАЦИИ И СКРОЛЛ-ЭФФЕКТЫ
+    // АНИМАЦИИ
     // ==========================================================
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
-    document.querySelectorAll('.scroll-reveal').forEach((el) => {
-        observer.observe(el);
-    });
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
-    // Плавная прокрутка к якорям
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
