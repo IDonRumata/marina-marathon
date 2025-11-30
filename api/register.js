@@ -135,19 +135,26 @@ export default async function handler(req, res) {
       return res.status(200).json({ success: true }); // Обманываем бота
     }
 
-    // --- 3. reCAPTCHA v3 ПРОВЕРКА ---
-    const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+    // --- 3. reCAPTCHA v3 ПРОВЕРКА (опциональная) ---
+    // Если reCAPTCHA заблокирована AdBlock - пропускаем, но логируем
+    let recaptchaResult = { success: true, score: 'N/A (skipped)' };
     
-    if (!recaptchaResult.success) {
-      console.log('reCAPTCHA failed:', recaptchaResult.error);
-      return res.status(400).json({ error: 'Проверка безопасности не пройдена. Попробуй ещё раз.' });
-    }
-    
-    // Score от 0.0 до 1.0 (1.0 = точно человек)
-    // Рекомендуется порог 0.5
-    if (recaptchaResult.score < 0.5) {
-      console.log(`Low reCAPTCHA score: ${recaptchaResult.score} for IP: ${ip}`);
-      return res.status(400).json({ error: 'Подозрительная активность. Попробуй ещё раз.' });
+    if (recaptchaToken) {
+      recaptchaResult = await verifyRecaptcha(recaptchaToken);
+      
+      // Если reCAPTCHA вернула ошибку - логируем, но НЕ блокируем
+      // (у пользователя может быть AdBlock)
+      if (!recaptchaResult.success) {
+        console.log('reCAPTCHA verification failed (AdBlock?):', recaptchaResult.error);
+        recaptchaResult.score = 'FAILED';
+      } else if (recaptchaResult.score < 0.3) {
+        // Блокируем только явных ботов (score < 0.3)
+        console.log(`Very low reCAPTCHA score: ${recaptchaResult.score} for IP: ${ip}`);
+        return res.status(400).json({ error: 'Подозрительная активность. Попробуй ещё раз.' });
+      }
+    } else {
+      console.log('No reCAPTCHA token (AdBlock blocking Google scripts?)');
+      recaptchaResult.score = 'NO_TOKEN';
     }
 
     // --- 4. ВАЛИДАЦИЯ ПОЛЕЙ ---
